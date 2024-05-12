@@ -3,6 +3,7 @@ import styles from "./register.module.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../../components/UI/Loader/Loader";
+import apiRequest from "../../../lib/apiRequest";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -21,28 +22,14 @@ const Register = () => {
     // console.log(username, email, password);
 
     try {
-      const res = await fetch("http://localhost:8000/api/v1/auth/register", {
-        method: "POST",
-        body: JSON.stringify({
-          username,
-          email,
-          password,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const res = await apiRequest.post("/auth/register", {
+        username,
+        email,
+        password,
       });
 
-      if (!res.ok) {
-        const data = await res.json();
-        // console.log(data);
-        setError(data.message);
-        return;
-      }
+      console.log(res.data);
 
-      // Si la réponse est ok, continuez comme prévu
-      const data = await res.json();
-      console.log(data);
       navigate("/auth/login");
     } catch (error) {
       // console.log(error.message);
