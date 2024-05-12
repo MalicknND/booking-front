@@ -1,0 +1,22 @@
+.update {
+  display: flex;
+  height: 100%;
+
+  .formContainer {
+    flex: 3;
+  }
+  .sideContainer {
+    flex: 2;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    .avatar {
+      width: 50%;
+      object-fit: cover;
+    }
+  }
+}

@@ -1,0 +1,170 @@
+@import "../../../styles/helpers/mixins";
+
+nav {
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  @include displayFlex(center, space-between);
+  height: 100px;
+  z-index: 1000;
+
+  a {
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+
+    @include sm {
+      display: none;
+    }
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+
+  .left {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    .logo {
+      font-weight: bold;
+      display: flex;
+      font-size: 20px;
+      gap: 10px;
+      align-items: center;
+
+      img {
+        width: 28px;
+      }
+      span {
+        cursor: pointer;
+      }
+      span {
+        @include md {
+          display: none;
+        }
+        @include sm {
+          display: initial;
+        }
+      }
+    }
+  }
+  .right {
+    flex: 2;
+    // display: flex;
+    // align-items: center;
+    // justify-content: flex-end;
+    @include displayFlex(center, flex-end);
+    // gap: 5px;
+    background-color: var(--secondary-color);
+    height: 100%;
+
+    @include md {
+      background-color: transparent;
+    }
+
+    a {
+      padding: 12px 24px;
+      margin: 20px;
+
+      @include sm {
+        padding: 8px 16px;
+        margin: 1px;
+      }
+    }
+
+    .user {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      @include sm {
+        display: none;
+      }
+      button {
+        cursor: pointer;
+        margin: 20px;
+      }
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+      }
+      span {
+        margin-right: 10px;
+
+        @include sm {
+          display: none;
+        }
+      }
+
+      .profile {
+        background-color: var(--primary-color);
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        position: relative;
+
+        .notification {
+          position: absolute;
+          top: -8px;
+          right: -8px;
+          background-color: red;
+          color: white;
+          cursor: pointer;
+          border-radius: 50%;
+          width: 26px;
+          height: 26px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    .register {
+      background-color: var(--primary-color);
+    }
+    .menuIcon {
+      display: none;
+      z-index: 1000;
+      img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+
+      @include sm {
+        display: initial;
+      }
+    }
+    .menu {
+      position: absolute;
+      top: 0;
+      right: -50%;
+      background-color: var(--black);
+      color: var(--white);
+      height: 100vh;
+      width: 50%;
+      transition: all 1s ease;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      @include displayFlex(center, center);
+      flex-direction: column;
+      font-size: 24px;
+
+      &.active {
+        right: 0;
+      }
+      @include sm {
+        a {
+          display: initial;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

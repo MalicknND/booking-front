@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Syne";
+  src: url("../fonts/syne/Syne-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Syne";
+  src: url("../fonts/syne/Syne-ExtraBold.ttf");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/poppins/Poppins-Bold.ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/poppins/Poppins-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../fonts/poppins/Poppins-Regular.ttf");
+  font-weight: 400;
+}
+
+$font1: "Poppins", sans-serif;
+$font2: "Syne", sans-serif;
