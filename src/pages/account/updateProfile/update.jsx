@@ -19,6 +19,7 @@ const Update = () => {
         email,
         password,
       });
+      console.log(res.data);
 
       updateCurrentUser(res.data);
       navigate("/account/profile");
