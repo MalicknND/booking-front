@@ -3,10 +3,13 @@ import styles from "./update.module.scss";
 import { AuthContext } from "../../../context/AuthContext";
 import apiRequest from "../../../lib/apiRequest";
 import { useNavigate } from "react-router-dom";
+import UploadWidget from "../../../components/UI/uploadWidget/UploadWidget";
 
 const Update = () => {
-  const [error, setError] = useState("");
   const { currentUser, updateCurrentUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const [avatar, setAvatar] = useState(currentUser.avatar);
+
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +21,9 @@ const Update = () => {
         username,
         email,
         password,
+        avatar,
       });
+      console.log(res.data);
 
       updateCurrentUser(res.data);
       navigate("/account/profile");
@@ -116,9 +121,19 @@ const Update = () => {
       </div>
       <div className={styles.sideContainer}>
         <img
-          src={currentUser.avatar || "/images/noavatar.jpg"}
+          src={avatar || "/images/noavatar.jpg"}
           alt="user"
           className={styles.avatar}
+        />
+        <UploadWidget
+          uwConfig={{
+            cloudName: "dfiyskfz6",
+            uploadPreset: "booking",
+            multiple: false,
+            maxImageFileSize: 2000000,
+            folder: "avatars",
+          }}
+          setAvatar={setAvatar}
         />
       </div>
     </div>
