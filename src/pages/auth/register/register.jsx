@@ -19,8 +19,6 @@ const Register = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    // console.log(username, email, password);
-
     try {
       const res = await apiRequest.post("/auth/register", {
         username,
@@ -38,6 +36,7 @@ const Register = () => {
       setLoading(false);
     }
   };
+
   if (loading) return <Loader />;
   return (
     <div className={styles.login}>

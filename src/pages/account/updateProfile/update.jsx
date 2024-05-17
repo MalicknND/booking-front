@@ -23,6 +23,7 @@ const Update = () => {
         password,
         avatar,
       });
+      console.log(res.data);
 
       updateCurrentUser(res.data);
       navigate("/account/profile");
