@@ -35,7 +35,9 @@ const Profile = () => {
           </div>
           <div className={styles.title}>
             <h2>Mes Appartements</h2>
-            <button>Ajouter</button>
+            <Link to="/account/profile/create-post">
+              <button>Ajouter</button>
+            </Link>
           </div>
           <List />
           <div className={styles.title}>
