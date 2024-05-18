@@ -32,9 +32,9 @@ const Header = () => {
             <span>Booking</span>
           </Link>
 
-          <Link to="/about">A propos</Link>
-          <Link to="/contact">Contact</Link>
+          {/* <Link to="/about">A propos</Link> */}
           <Link to="/list">List</Link>
+          <Link to="/contact">Contact</Link>
         </div>
         <div className="right">
           {currentUser ? (
@@ -70,19 +70,21 @@ const Header = () => {
           >
             {currentUser ? (
               <>
-                <Link to="/about">A propos</Link>
+                {/* <Link to="/about">A propos</Link> */}
+                <Link to="/list">List</Link>
                 <Link to="/contact">Contact</Link>
                 <Link to="/account/profile">Profil</Link>
-
-                <button onClick={handleLogout} className="logout">
-                  Déconnexion
-                </button>
+                <Link className="register">
+                  <button onClick={handleLogout} className="logout">
+                    <span>Logout</span>
+                  </button>
+                </Link>
               </>
             ) : (
               <>
-                <Link to="/about">A propos</Link>
+                {/* <Link to="/about">A propos</Link> */}
+                <Link to="/list">List</Link>
                 <Link to="/contact">Contact</Link>
-                <Link to="/list">Appartements</Link>
                 <Link to="/auth/login">Connexion</Link>
                 <Link to="/auth/register" className="register">
                   S&apos;enregistrer
