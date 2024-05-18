@@ -9,6 +9,7 @@ import Contact from "./pages/contact/contact";
 import Profilepage from "./pages/account/profile/profile";
 import Aboutpage from "./pages/apropos/about";
 import Updatepage from "./pages/account/updateProfile/update";
+import NewPostPage from "./pages/newPostPage/newPostPage";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -31,6 +32,7 @@ const App = () => {
       children: [
         { path: "/account/profile", element: <Profilepage /> },
         { path: "/account/profile/update", element: <Updatepage /> },
+        { path: "/account/profile/create-post", element: <NewPostPage /> },
       ],
     },
   ]);

@@ -8,7 +8,7 @@ import UploadWidget from "../../../components/UI/uploadWidget/UploadWidget";
 const Update = () => {
   const { currentUser, updateCurrentUser } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const [avatar, setAvatar] = useState(currentUser.avatar);
+  const [avatar, setAvatar] = useState([]);
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -21,7 +21,7 @@ const Update = () => {
         username,
         email,
         password,
-        avatar,
+        avatar: avatar[0],
       });
       console.log(res.data);
 
@@ -121,7 +121,7 @@ const Update = () => {
       </div>
       <div className={styles.sideContainer}>
         <img
-          src={avatar || "/images/noavatar.jpg"}
+          src={avatar[0] || currentUser.avatar || "/images/noavatar.jpg"}
           alt="user"
           className={styles.avatar}
         />
@@ -133,7 +133,7 @@ const Update = () => {
             maxImageFileSize: 2000000,
             folder: "avatars",
           }}
-          setAvatar={setAvatar}
+          setState={setAvatar}
         />
       </div>
     </div>
