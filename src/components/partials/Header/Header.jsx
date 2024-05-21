@@ -7,7 +7,7 @@ import { AuthContext } from "../../../context/AuthContext";
 const Header = () => {
   const [open, setOpen] = useState(false);
 
-  const { currentUser, updateCurrentUser, logout } = useContext(AuthContext);
+  const { currentUser, updateCurrentUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -45,7 +45,7 @@ const Header = () => {
                 <div className="notification">3</div>
                 <span> Profil</span>
               </Link>
-              <button onClick={() => logout()} className="logout">
+              <button onClick={handleLogout} className="logout">
                 Déconnexion
               </button>
             </div>

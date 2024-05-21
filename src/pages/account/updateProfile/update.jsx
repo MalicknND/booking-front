@@ -4,15 +4,19 @@ import { AuthContext } from "../../../context/AuthContext";
 import apiRequest from "../../../lib/apiRequest";
 import { useNavigate } from "react-router-dom";
 import UploadWidget from "../../../components/UI/uploadWidget/UploadWidget";
+import Loader from "../../../components/UI/Loader/Loader";
 
 const Update = () => {
   const { currentUser, updateCurrentUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [avatar, setAvatar] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
     const formData = new FormData(e.target);
     const { username, email, password } = Object.fromEntries(formData);
 
@@ -30,15 +34,18 @@ const Update = () => {
     } catch (err) {
       console.log(err);
       setError(err.response.data.message);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) return <Loader />;
 
   return (
     <div className={styles.update}>
       <div className={styles.formContainer}>
         <div className="mt-40 mx-auto w-1/2 flex flex-col justify-center px-6 pt-8 sm:px-24 md:justify-start md:px-8 md:pt-0 lg:px-12">
           <p className="text-center text-3xl font-bold">Modifier</p>
-          {/* <p className="mt-2 text-center">Create an account</p> */}
           <form onSubmit={handleSubmit} className="flex flex-col pt-3 md:pt-8">
             <div className="flex flex-col pt-4">
               <div className=" flex overflow-hidden rounded-lg border focus-within:border-transparent focus-within:ring-2 transition focus-within:ring-[#fece51]">
