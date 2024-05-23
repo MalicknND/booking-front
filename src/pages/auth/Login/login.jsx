@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import Loader from "../../../components/UI/Loader/Loader";
 import apiRequest from "../../../lib/apiRequest";
 import { AuthContext } from "../../../context/AuthContext";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -26,8 +27,11 @@ const Login = () => {
         email,
         password,
       });
-      // localStorage.setItem("user", JSON.stringify(res.data));
+
+      Cookies.set("token", res.data.token, { expires: 7 });
+
       updateCurrentUser(res.data);
+      console.log("Logged in", res.data);
       navigate("/");
     } catch (err) {
       setError(err.response.data.message);
