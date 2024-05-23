@@ -28,10 +28,11 @@ const Login = () => {
         password,
       });
 
-      Cookies.set("token", res.data.token, { expires: 7 });
+      const age = 1000 * 60 * 60;
+
+      Cookies.set("token", res.data.token, { expires: age });
 
       updateCurrentUser(res.data);
-      console.log("Logged in", res.data);
       navigate("/");
     } catch (err) {
       setError(err.response.data.message);
