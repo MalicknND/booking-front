@@ -28,9 +28,17 @@ const Login = () => {
         password,
       });
 
-      const age = 1000 * 60 * 60;
+      // const age = 1000 * 60 * 60;
 
-      Cookies.set("token", res.data.token, { expires: age });
+      // Cookies.set("token", res.data.token, { expires: age });
+
+      // Après avoir reçu le JWT du serveur
+      Cookies.set("token", res.data.token, {
+        expires: 1,
+        secure: true,
+        sameSite: "strict",
+        httpOnly: true,
+      });
 
       updateCurrentUser(res.data);
       navigate("/");
