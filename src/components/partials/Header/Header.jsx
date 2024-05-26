@@ -1,25 +1,12 @@
 import { useContext, useState } from "react";
 import "./Header.scss";
-import { Link, useNavigate } from "react-router-dom";
-import apiRequest from "../../../lib/apiRequest";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
 
-  const { currentUser, updateCurrentUser } = useContext(AuthContext);
-
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    try {
-      await apiRequest.post("auth/logout");
-      updateCurrentUser(null);
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const { currentUser, logout } = useContext(AuthContext);
 
   //  au click sur le body setOpen to false
 
@@ -45,7 +32,7 @@ const Header = () => {
                 <div className="notification">3</div>
                 <span> Profil</span>
               </Link>
-              <button onClick={handleLogout} className="logout">
+              <button onClick={() => logout()} className="logout">
                 Déconnexion
               </button>
             </div>
@@ -75,7 +62,7 @@ const Header = () => {
                 <Link to="/contact">Contact</Link>
                 <Link to="/account/profile">Profil</Link>
                 <Link className="register">
-                  <button onClick={handleLogout} className="logout">
+                  <button onClick={() => logout()} className="logout">
                     <span>Logout</span>
                   </button>
                 </Link>
