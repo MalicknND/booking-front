@@ -1,10 +1,23 @@
+@import "../../../styles/helpers/mixins";
+
 .update {
   display: flex;
   height: 100%;
 
   .formContainer {
     flex: 3;
+    padding: 20px;
+
+    @include xs {
+      padding-bottom: 20px;
+    }
+
+    @include sm {
+      flex: 1;
+      padding: 10px;
+    }
   }
+
   .sideContainer {
     flex: 2;
     background-color: var(--secondary-color);
@@ -14,9 +27,31 @@
     align-items: center;
     justify-content: center;
 
+    @include xs {
+      display: none;
+    }
+
     .avatar {
       width: 50%;
       object-fit: cover;
+      border-radius: 50%;
+
+      @include xs {
+        width: 20%;
+        display: none;
+      }
+
+      @include sm {
+        width: 70%;
+      }
+
+      @include xs {
+        width: 90%;
+      }
     }
+  }
+
+  @include md {
+    flex-direction: column;
   }
 }

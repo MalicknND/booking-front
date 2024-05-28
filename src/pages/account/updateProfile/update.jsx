@@ -44,7 +44,7 @@ const Update = () => {
   return (
     <div className={styles.update}>
       <div className={styles.formContainer}>
-        <div className="mt-40 mx-auto w-1/2 flex flex-col justify-center px-6 pt-8 sm:px-24 md:justify-start md:px-8 md:pt-0 lg:px-12">
+        <div className="mt-40 mx-auto w-full flex flex-col justify-center px-6 pt-8  sm:px-24 md:px-8 md:pt-0 lg:px-12">
           <p className="text-center text-3xl font-bold">Modifier</p>
           <form onSubmit={handleSubmit} className="flex flex-col pt-3 md:pt-8">
             <div className="flex flex-col pt-4">

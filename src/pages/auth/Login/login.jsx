@@ -36,8 +36,8 @@ const Login = () => {
       Cookies.set("token", res.data.token, {
         expires: 1,
         secure: true,
-        sameSite: "strict",
-        httpOnly: true,
+        sameSite: "none",
+        // httpOnly: true,
       });
 
       updateCurrentUser(res.data);
