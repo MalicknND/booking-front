@@ -1,39 +1,30 @@
 import Slider from "../../components/UI/slider/Slider";
 import styles from "./singlepage.module.scss";
-// import { singlePostData, userData } from "../../lib/data";
+import { singlePostData, userData } from "../../lib/data";
 import Map from "../../components/UI/map/Map";
-import { useLoaderData } from "react-router-dom";
-import DOMPurify from "dompurify";
 
 const Singlepage = () => {
-  const post = useLoaderData();
-  console.log(post);
   return (
     <div className={styles.singlepage}>
       <div className={styles.details}>
         <div className={styles.wrapper}>
-          <Slider images={post.images} />
+          <Slider images={singlePostData.images} />
           <div className={styles.info}>
             <div className={styles.top}>
               <div className={styles.post}>
-                <h2>{post.title}</h2>
+                <h2>{singlePostData.title}</h2>
                 <div className={styles.address}>
                   <img src="/images/pin.png" alt="icon" />
-                  <span>{post.address}</span>
+                  <span>{singlePostData.address}</span>
                 </div>
-                <div className={styles.price}>{post.price} €</div>
+                <div className={styles.price}>{singlePostData.price} €</div>
               </div>
               <div className={styles.user}>
-                <img src={post.user.avatar} alt="icon" />
-                <span>{post.user.username}</span>
+                <img src={userData.img} alt="icon" />
+                <span>{userData.name}</span>
               </div>
             </div>
-            <div
-              className={styles.bottom}
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(post.postDetail.description),
-              }}
-            ></div>
+            <div className={styles.bottom}>{singlePostData.description}</div>
           </div>
         </div>
       </div>
@@ -45,27 +36,21 @@ const Singlepage = () => {
               <img src="/images/utility.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>Utilities</span>
-                {post.postDetail.utilities === "owner"
-                  ? "Owner is responsible"
-                  : "Tenant is responsible"}
+                <p>Renter is responsible</p>
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/pet.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>Pet Policy</span>
-                {post.postDetail.pet === "allowed" ? (
-                  <p>Allowed</p>
-                ) : (
-                  <p>Not Allowed</p>
-                )}
+                <p>Pets Allowed</p>
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/fee.png" alt="icon" />
               <div className={styles.featureText}>
-                <span>Income Policy</span>
-                <p>{post.postDetail.income}</p>
+                <span>Property Fees</span>
+                <p>Must have 3x the rent in total household income</p>
               </div>
             </div>
           </div>
@@ -73,15 +58,15 @@ const Singlepage = () => {
           <div className={styles.sizes}>
             <div className={styles.size}>
               <img src="/images/size.png" alt="icon" />
-              <span>{post.postDetail.size}</span>
+              <span>80</span>
             </div>
             <div className={styles.size}>
               <img src="/images/bed.png" alt="icon" />
-              <span>{post.bedroom} bedrooms</span>
+              <span>2 bedroom</span>
             </div>
             <div className={styles.size}>
               <img src="/images/bath.png" alt="icon" />
-              <span>{post.bathroom} bathroom</span>
+              <span>1 bathroom</span>
             </div>
           </div>
           <p className={styles.title}>Nearby Places</p>
@@ -90,32 +75,27 @@ const Singlepage = () => {
               <img src="/images/school.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>School</span>
-                <p>{post.postDetail.school}m away</p>
+                <p>250m away</p>
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/bus.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>Bus Stop</span>
-                <p>{post.postDetail.bus}m away</p>
+                <p>100m away</p>
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/restaurant.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>Restaurant</span>
-                <p>
-                  {post.postDetail.restaurant > 999
-                    ? post.postDetail.restaurant / 1000 + "km"
-                    : post.postDetail.restaurant + "m"}{" "}
-                  away
-                </p>
+                <p>200m away</p>
               </div>
             </div>
           </div>
           <p className={styles.title}>Loaction</p>
           <div className={styles.mapContainer}>
-            <Map items={[post]} />
+            <Map items={[singlePostData]} />
           </div>
           <div className={styles.buttons}>
             <button className={styles.button}>
