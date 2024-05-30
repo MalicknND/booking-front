@@ -6,7 +6,7 @@ const Card = ({ item }) => {
   return (
     <div className={styles.card}>
       <Link to={`/list/${item.id}`} className={styles.imgContainer}>
-        <img src={item.images[0]} alt="" />
+        <img src={item.img} alt="" />
       </Link>
       <div className={styles.textContainer}>
         <h2 className={styles.title}>
@@ -46,13 +46,13 @@ const Card = ({ item }) => {
 
 Card.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.string,
-    images: PropTypes.array,
-    title: PropTypes.string,
-    address: PropTypes.string,
-    price: PropTypes.number,
-    bedroom: PropTypes.number,
-    bathroom: PropTypes.number,
+    id: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    bedroom: PropTypes.number.isRequired,
+    bathroom: PropTypes.number.isRequired,
   }).isRequired,
 };
 
