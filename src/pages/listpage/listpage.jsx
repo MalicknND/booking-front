@@ -13,7 +13,7 @@ const Listpage = () => {
           <Filter />
           {data.map((item) => (
             <div key={item.id} className={styles.item}>
-              <Card key={item.id} item={item} />
+              <Card key={item.id.toString()} item={item} />
             </div>
           ))}
         </div>
