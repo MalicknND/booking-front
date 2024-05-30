@@ -26,8 +26,10 @@ const Pin = ({ item }) => {
 Pin.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired,
+    latitude: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+      .isRequired,
+    longitude: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+      .isRequired,
     img: PropTypes.string,
     title: PropTypes.string,
     bedroom: PropTypes.number,

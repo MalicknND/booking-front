@@ -32,8 +32,10 @@ Map.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
+      latitude: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
+      longitude: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
       img: PropTypes.string,
       title: PropTypes.string,
       bedroom: PropTypes.number,
