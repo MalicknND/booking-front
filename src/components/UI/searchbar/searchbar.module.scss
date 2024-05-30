@@ -74,20 +74,27 @@
         border: 1px solid #999;
       }
     }
-    button {
-      cursor: pointer;
-      background-color: var(--primary-color);
+    a {
       flex: 1;
-      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--primary-color);
 
-      @include sm {
-        padding: 15px;
-      }
+      button {
+        cursor: pointer;
+        background-color: var(--primary-color);
+        border: none;
 
-      img {
-        width: 24px;
-        height: 24px;
-        margin: 0 auto;
+        @include sm {
+          padding: 15px;
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+          margin: 0 auto;
+        }
       }
     }
   }

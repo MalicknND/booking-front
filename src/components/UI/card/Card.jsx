@@ -6,7 +6,7 @@ const Card = ({ item }) => {
   // Vérifiez si item et toutes les propriétés requises sont définies
   if (
     !item ||
-    !item.img ||
+    !item.images ||
     !item.title ||
     !item.address ||
     item.price == null ||
@@ -23,7 +23,7 @@ const Card = ({ item }) => {
   return (
     <div className={styles.card}>
       <Link to={`/list/${item.id}`} className={styles.imgContainer}>
-        <img src={item.img} alt={item.title} />
+        <img src={item.images[0]} alt={item.title} />
       </Link>
       <div className={styles.textContainer}>
         <h2 className={styles.title}>
@@ -64,7 +64,7 @@ const Card = ({ item }) => {
 Card.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    img: PropTypes.string.isRequired,
+    images: PropTypes.array.isRequired,
     title: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
