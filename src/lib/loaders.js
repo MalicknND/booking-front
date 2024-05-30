@@ -5,10 +5,9 @@ export const singlePageLoader = async ({ params }) => {
   return res.data;
 };
 
-// export const listPageLoader = async ({ request }) => {
-//   console.log(request);
-//   const query = request.url.split("?")[1];
-//   const res = await apiRequest("/post/all?" + query);
-//   return res.data;
-// };
-// //
+export const listPageLoader = async ({ request }) => {
+  console.log(request);
+  const query = request.url.split("?")[1];
+  const res = await apiRequest("/post/all?" + query);
+  return res.data;
+};

@@ -10,7 +10,7 @@ import Profilepage from "./pages/account/profile/profile";
 import Aboutpage from "./pages/apropos/about";
 import Updatepage from "./pages/account/updateProfile/update";
 import NewPostPage from "./pages/newPostPage/newPostPage";
-import { singlePageLoader } from "./lib/loaders";
+import { listPageLoader, singlePageLoader } from "./lib/loaders";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -19,7 +19,7 @@ const App = () => {
       element: <Layout />,
       children: [
         { path: "/", element: <Homepage /> },
-        { path: "/list", element: <Listpage /> },
+        { path: "/list", element: <Listpage />, loader: listPageLoader },
         {
           path: "/list/:id",
           element: <Singlepage />,
