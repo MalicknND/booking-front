@@ -3,17 +3,34 @@ import styles from "./card.module.scss";
 import { Link } from "react-router-dom";
 
 const Card = ({ item }) => {
+  // Vérifiez si item et toutes les propriétés requises sont définies
+  if (
+    !item ||
+    !item.img ||
+    !item.title ||
+    !item.address ||
+    item.price == null ||
+    item.bedroom == null ||
+    item.bathroom == null
+  ) {
+    return (
+      <div className={styles.card}>
+        <p>Informations manquantes ou incorrectes</p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.card}>
       <Link to={`/list/${item.id}`} className={styles.imgContainer}>
-        <img src={item.img} alt="" />
+        <img src={item.img} alt={item.title} />
       </Link>
       <div className={styles.textContainer}>
         <h2 className={styles.title}>
           <Link to={`/list/${item.id}`}>{item.title}</Link>
         </h2>
         <p className={styles.address}>
-          <img src="/images/pin.png" alt="" />
+          <img src="/images/pin.png" alt="Localisation" />
           <span>{item.address}</span>
         </p>
         <p className={styles.price}>
@@ -46,7 +63,7 @@ const Card = ({ item }) => {
 
 Card.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,

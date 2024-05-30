@@ -1,30 +1,60 @@
 import Slider from "../../components/UI/slider/Slider";
 import styles from "./singlepage.module.scss";
-import { singlePostData, userData } from "../../lib/data";
 import Map from "../../components/UI/map/Map";
+import { useLoaderData } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 const Singlepage = () => {
+  const post = useLoaderData();
+
+  // Convertir les champs nécessaires en nombres
+  const convertedPost = {
+    ...post,
+    id: post.id,
+    latitude: Number(post.latitude),
+    longitude: Number(post.longitude),
+    postDetail: {
+      ...post.postDetail,
+      school: Number(post.postDetail.school),
+      bus: Number(post.postDetail.bus),
+      restaurant: Number(post.postDetail.restaurant),
+    },
+    user: {
+      ...post.user,
+      avatar: post.user.avatar,
+    },
+  };
+
+  console.log(convertedPost);
+
   return (
     <div className={styles.singlepage}>
       <div className={styles.details}>
         <div className={styles.wrapper}>
-          <Slider images={singlePostData.images} />
+          <Slider images={convertedPost.images} />
           <div className={styles.info}>
             <div className={styles.top}>
               <div className={styles.post}>
-                <h2>{singlePostData.title}</h2>
+                <h2>{convertedPost.title}</h2>
                 <div className={styles.address}>
                   <img src="/images/pin.png" alt="icon" />
-                  <span>{singlePostData.address}</span>
+                  <span>{convertedPost.address}</span>
                 </div>
-                <div className={styles.price}>{singlePostData.price} €</div>
+                <div className={styles.price}>{convertedPost.price} €</div>
               </div>
               <div className={styles.user}>
-                <img src={userData.img} alt="icon" />
-                <span>{userData.name}</span>
+                <img src={convertedPost.user.avatar} alt="icon" />
+                <span>{convertedPost.user.username}</span>
               </div>
             </div>
-            <div className={styles.bottom}>{singlePostData.description}</div>
+            <div
+              className={styles.bottom}
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(
+                  convertedPost.postDetail.description
+                ),
+              }}
+            ></div>
           </div>
         </div>
       </div>
@@ -36,21 +66,29 @@ const Singlepage = () => {
               <img src="/images/utility.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>Utilities</span>
-                <p>Renter is responsible</p>
+                {convertedPost.postDetail.utilities === "owner" ? (
+                  <p>Owner is responsible</p>
+                ) : (
+                  <p>Tenant is responsible</p>
+                )}
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/pet.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>Pet Policy</span>
-                <p>Pets Allowed</p>
+                {convertedPost.postDetail.pet === "allowed" ? (
+                  <p>Allowed</p>
+                ) : (
+                  <p>Not Allowed</p>
+                )}
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/fee.png" alt="icon" />
               <div className={styles.featureText}>
-                <span>Property Fees</span>
-                <p>Must have 3x the rent in total household income</p>
+                <span>Income Policy</span>
+                <p>{convertedPost.postDetail.income}</p>
               </div>
             </div>
           </div>
@@ -58,15 +96,15 @@ const Singlepage = () => {
           <div className={styles.sizes}>
             <div className={styles.size}>
               <img src="/images/size.png" alt="icon" />
-              <span>80</span>
+              <span>{convertedPost.postDetail.size}</span>
             </div>
             <div className={styles.size}>
               <img src="/images/bed.png" alt="icon" />
-              <span>2 bedroom</span>
+              <span>{convertedPost.bedroom} bedrooms</span>
             </div>
             <div className={styles.size}>
               <img src="/images/bath.png" alt="icon" />
-              <span>1 bathroom</span>
+              <span>{convertedPost.bathroom} bathroom</span>
             </div>
           </div>
           <p className={styles.title}>Nearby Places</p>
@@ -75,27 +113,32 @@ const Singlepage = () => {
               <img src="/images/school.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>School</span>
-                <p>250m away</p>
+                <p>{convertedPost.postDetail.school}m away</p>
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/bus.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>Bus Stop</span>
-                <p>100m away</p>
+                <p>{convertedPost.postDetail.bus}m away</p>
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/restaurant.png" alt="icon" />
               <div className={styles.featureText}>
                 <span>Restaurant</span>
-                <p>200m away</p>
+                <p>
+                  {convertedPost.postDetail.restaurant > 999
+                    ? convertedPost.postDetail.restaurant / 1000 + "km"
+                    : convertedPost.postDetail.restaurant + "m"}{" "}
+                  away
+                </p>
               </div>
             </div>
           </div>
-          <p className={styles.title}>Loaction</p>
+          <p className={styles.title}>Location</p>
           <div className={styles.mapContainer}>
-            <Map items={[singlePostData]} />
+            <Map items={[convertedPost]} />
           </div>
           <div className={styles.buttons}>
             <button className={styles.button}>
