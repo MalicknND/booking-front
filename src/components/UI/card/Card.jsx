@@ -8,7 +8,7 @@ const Card = ({ item }) => {
     !item ||
     !item.images ||
     !item.title ||
-    !item.address ||
+    !item.city ||
     item.price == null ||
     item.bedroom == null ||
     item.bathroom == null
@@ -31,7 +31,7 @@ const Card = ({ item }) => {
         </h2>
         <p className={styles.address}>
           <img src="/images/pin.png" alt="Localisation" />
-          <span>{item.address}</span>
+          <span>{item.city}</span>
         </p>
         <p className={styles.price}>
           <span>{item.price} €</span>
@@ -66,7 +66,7 @@ Card.propTypes = {
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     images: PropTypes.array.isRequired,
     title: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     bedroom: PropTypes.number.isRequired,
     bathroom: PropTypes.number.isRequired,

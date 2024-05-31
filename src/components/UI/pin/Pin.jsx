@@ -10,7 +10,7 @@ const Pin = ({ item }) => {
     <Marker position={[item.latitude, item.longitude]}>
       <Popup>
         <div className={styles.popupContainer}>
-          <img src={item.img} alt="img" />
+          <img src={item.images[0]} alt="img" />
           <div className={styles.textContainer}>
             <Link to={`/list/${item.id}`}>{item.title}</Link>
             <span> {item.bedroom} bedroom </span>
@@ -30,7 +30,7 @@ Pin.propTypes = {
       .isRequired,
     longitude: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
       .isRequired,
-    img: PropTypes.string,
+    images: PropTypes.array,
     title: PropTypes.string,
     bedroom: PropTypes.number,
     price: PropTypes.number,
