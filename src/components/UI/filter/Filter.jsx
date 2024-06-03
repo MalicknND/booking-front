@@ -4,8 +4,6 @@ import { useState } from "react";
 
 const Filter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
-  console.log(searchParams.get("city") || "All Cities");
 
   // Initialize the state with the search parameters
   const [query, setQuery] = useState({

@@ -27,7 +27,6 @@ const Update = () => {
         password,
         avatar: avatar[0],
       });
-      console.log(res.data);
 
       updateCurrentUser(res.data);
       navigate("/account/profile");
