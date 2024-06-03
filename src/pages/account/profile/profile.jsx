@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import Chat from "../../../components/UI/chat/Chat";
 import List from "../../../components/UI/list/List";
 import styles from "./profile.module.scss";
 import { AuthContext } from "../../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Await, Link, useLoaderData } from "react-router-dom";
+import Loader from "../../../components/UI/Loader/Loader";
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
-
+  const data = useLoaderData();
+  console.log(data.postResponse.data);
   return (
     <div className={styles.profile}>
       <div className={styles.details}>
@@ -39,11 +41,25 @@ const Profile = () => {
               <button>Ajouter</button>
             </Link>
           </div>
-          <List />
+          <Suspense fallback={<Loader />}>
+            <Await
+              resolve={data.postResponse}
+              errorElement={<p>Error loading posts !</p>}
+            >
+              {(postResponse) => <List posts={postResponse.data.userPosts} />}
+            </Await>
+          </Suspense>
           <div className={styles.title}>
             <h2>Sauvegardés</h2>
           </div>
-          <List />
+          <Suspense fallback={<Loader />}>
+            <Await
+              resolve={data.postResponse}
+              errorElement={<p>Error loading posts !</p>}
+            >
+              {(postResponse) => <List posts={postResponse.data.savedPosts} />}
+            </Await>
+          </Suspense>
         </div>
       </div>
 
