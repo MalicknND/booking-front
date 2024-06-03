@@ -64,12 +64,12 @@ const Card = ({ item }) => {
 Card.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    images: PropTypes.array.isRequired,
-    title: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    bedroom: PropTypes.number.isRequired,
-    bathroom: PropTypes.number.isRequired,
+    images: PropTypes.array,
+    title: PropTypes.string,
+    city: PropTypes.string,
+    price: PropTypes.number,
+    bedroom: PropTypes.number,
+    bathroom: PropTypes.number,
   }).isRequired,
 };
 

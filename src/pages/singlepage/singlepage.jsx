@@ -1,11 +1,19 @@
 import Slider from "../../components/UI/slider/Slider";
 import styles from "./singlepage.module.scss";
 import Map from "../../components/UI/map/Map";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import apiRequest from "../../lib/apiRequest";
 
 const Singlepage = () => {
+  const navigate = useNavigate();
   const post = useLoaderData();
+  console.log(post);
+
+  const { currentUser } = useContext(AuthContext);
+  const [saved, setSaved] = useState(post.isSaved);
 
   // Convertir les champs nécessaires en nombres
   const convertedPost = {
@@ -25,7 +33,18 @@ const Singlepage = () => {
     },
   };
 
-  console.log(convertedPost);
+  const handleSave = async () => {
+    setSaved((prev) => !prev);
+    if (!currentUser) {
+      navigate("/auth/login");
+    }
+    try {
+      await apiRequest.post("/user/save", { postId: post.id });
+    } catch (error) {
+      console.log(error);
+      setSaved((prev) => !prev);
+    }
+  };
 
   return (
     <div className={styles.singlepage}>
@@ -145,9 +164,15 @@ const Singlepage = () => {
               <img src="/images/chat.png" alt="icon" />
               Message
             </button>
-            <button className={styles.button}>
+            <button
+              onClick={handleSave}
+              className={styles.button}
+              style={{
+                backgroundColor: saved ? "#fece51" : "white",
+              }}
+            >
               <img src="/images/save.png" alt="icon" />
-              Enregistrer
+              {saved ? "Place saved" : "Save place"}
             </button>
           </div>
         </div>
