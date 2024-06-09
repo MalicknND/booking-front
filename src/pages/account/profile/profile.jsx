@@ -9,7 +9,6 @@ import Loader from "../../../components/UI/Loader/Loader";
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
   const data = useLoaderData();
-  console.log(data.postResponse.data);
   return (
     <div className={styles.profile}>
       <div className={styles.details}>
