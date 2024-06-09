@@ -1,35 +1,38 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./chat.module.scss";
+import { AuthContext } from "../../../context/AuthContext";
 
 const Chat = () => {
+  const { currentUser } = useContext(AuthContext);
+
   const [chat, setChat] = useState(true);
   return (
     <div className={styles.chat}>
       <div className={styles.messages}>
         <h2>Messages</h2>
         <div className={styles.message}>
-          <img src="/images/Malick.jpg" alt="user" />
-          <span>Malick</span>
+          <img src={currentUser.avatar || "/images/noavatar.jpg"} alt="user" />
+          <span>{currentUser.username}</span>
           <p>Lorem ipsum dolor...</p>
         </div>
         <div className={styles.message}>
-          <img src="/images/Malick.jpg" alt="user" />
-          <span>Malick</span>
+          <img src={currentUser.avatar || "/images/noavatar.jpg"} alt="user" />
+          <span>{currentUser.username}</span>
           <p>Lorem ipsum dolor...</p>
         </div>
         <div className={styles.message}>
-          <img src="/images/Malick.jpg" alt="user" />
-          <span>Malick</span>
+          <img src={currentUser.avatar || "/images/noavatar.jpg"} alt="user" />
+          <span>{currentUser.username}</span>
           <p>Lorem ipsum dolor...</p>
         </div>
         <div className={styles.message}>
-          <img src="/images/Malick.jpg" alt="user" />
-          <span>Malick</span>
+          <img src={currentUser.avatar || "/images/noavatar.jpg"} alt="user" />
+          <span>{currentUser.username}</span>
           <p>Lorem ipsum dolor...</p>
         </div>
         <div className={styles.message}>
-          <img src="/images/Malick.jpg" alt="user" />
-          <span>Malick</span>
+          <img src={currentUser.avatar || "/images/noavatar.jpg"} alt="user" />
+          <span>{currentUser.username}</span>
           <p>Lorem ipsum dolor...</p>
         </div>
       </div>
@@ -37,7 +40,10 @@ const Chat = () => {
         <div className={styles.chatBox}>
           <div className={styles.top}>
             <div className={styles.user}>
-              <img src="/images/Malick.jpg" alt="user" />
+              <img
+                src={currentUser.avatar || "/images/noavatar.jpg"}
+                alt="user"
+              />
               Malick
             </div>
             <div className={styles.close} onClick={() => setChat(false)}>
