@@ -84,34 +84,34 @@ const Singlepage = () => {
             <div className={styles.feature}>
               <img src="/images/utility.png" alt="icon" />
               <div className={styles.featureText}>
-                <span>Utilities</span>
+                <span>Utilitaires</span>
                 {convertedPost.postDetail.utilities === "owner" ? (
-                  <p>Owner is responsible</p>
+                  <p>Le propriétaire est responsable</p>
                 ) : (
-                  <p>Tenant is responsible</p>
+                  <p>Le locataire est responsable</p>
                 )}
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/pet.png" alt="icon" />
               <div className={styles.featureText}>
-                <span>Pet Policy</span>
+                <span>Animal de compagnie</span>
                 {convertedPost.postDetail.pet === "allowed" ? (
-                  <p>Allowed</p>
+                  <p>Autorisé</p>
                 ) : (
-                  <p>Not Allowed</p>
+                  <p>Non Autorisé</p>
                 )}
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/fee.png" alt="icon" />
               <div className={styles.featureText}>
-                <span>Income Policy</span>
+                <span>Revenu</span>
                 <p>{convertedPost.postDetail.income}</p>
               </div>
             </div>
           </div>
-          <p className={styles.title}>Sizes</p>
+          <p className={styles.title}>Tailles</p>
           <div className={styles.sizes}>
             <div className={styles.size}>
               <img src="/images/size.png" alt="icon" />
@@ -119,27 +119,27 @@ const Singlepage = () => {
             </div>
             <div className={styles.size}>
               <img src="/images/bed.png" alt="icon" />
-              <span>{convertedPost.bedroom} bedrooms</span>
+              <span>{convertedPost.bedroom} Chambres</span>
             </div>
             <div className={styles.size}>
               <img src="/images/bath.png" alt="icon" />
-              <span>{convertedPost.bathroom} bathroom</span>
+              <span>{convertedPost.bathroom} Salle de bain</span>
             </div>
           </div>
-          <p className={styles.title}>Nearby Places</p>
+          <p className={styles.title}>Lieux à proximité</p>
           <div className={styles.row}>
             <div className={styles.feature}>
               <img src="/images/school.png" alt="icon" />
               <div className={styles.featureText}>
-                <span>School</span>
-                <p>{convertedPost.postDetail.school}m away</p>
+                <span>Ecoles</span>
+                <p>{convertedPost.postDetail.school}m </p>
               </div>
             </div>
             <div className={styles.feature}>
               <img src="/images/bus.png" alt="icon" />
               <div className={styles.featureText}>
-                <span>Bus Stop</span>
-                <p>{convertedPost.postDetail.bus}m away</p>
+                <span>Arrêt bus</span>
+                <p>{convertedPost.postDetail.bus}m </p>
               </div>
             </div>
             <div className={styles.feature}>
@@ -150,7 +150,6 @@ const Singlepage = () => {
                   {convertedPost.postDetail.restaurant > 999
                     ? convertedPost.postDetail.restaurant / 1000 + "km"
                     : convertedPost.postDetail.restaurant + "m"}{" "}
-                  away
                 </p>
               </div>
             </div>
@@ -172,7 +171,7 @@ const Singlepage = () => {
               }}
             >
               <img src="/images/save.png" alt="icon" />
-              {saved ? "Place saved" : "Save place"}
+              {saved ? "sauvegardé" : "Sauvegarder"}
             </button>
           </div>
         </div>

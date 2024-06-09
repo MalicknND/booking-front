@@ -1,10 +1,14 @@
+# Malick Siguy NDIAYE
+
 # Booking App - Frontend & Backend
 
 - \*\*Bienvenue dans l'application de réservation d'appartements !
 - \*\*C'est un projet suite au cours de FullStack avec Vincent Zerbib
 - \*\*Cette application vous permet de vendre ou de louer des appartements en ligne de manière simple et efficace.
 
-![Booking App](./booking-front/public/images/projet.png "Booking App")
+Lien front: [Booking App](https://booking-m1.vercel.app "Booking App")
+Lien back: [Api](https://booking-api-li8f.onrender.com/api/v1 "API PROD")
+Lien des requêtes postman: [Postman](https://web.postman.co/workspace/ed1ac5c0-9a99-40a0-855d-456f701e3c6f/documentation/19841044-88b835c9-9c4a-4cd2-84d3-a06dcec296ee "Postman")
 
 ## Technologies Utilisées
 
@@ -23,10 +27,10 @@
 
 ## Fonctionnalités
 
-- **Authentification**: Connexion et inscription sécurisées pour les utilisateurs.
-- **Gestion des Utilisateurs**: Profils utilisateur avec CRUD complet.
-- **Gestion des Annonces**: Création, modification et suppression d'annonces d'appartements.
-- **Recherche et Filtrage**: Recherche avancée avec filtrage par prix, localisation, etc.
+- **Authentification**: Connexion et inscription sécurisées pour les utilisateurs.✅
+- **Gestion des Utilisateurs**: Update les infos du user,✅.
+- **Gestion des Annonces**: Création d'annonces d'appartements, sauvegarder un post.✅
+- **Recherche et Filtrage**: Recherche avancée avec filtrage par prix, localisation, etc.✅
 
 ## Fonctionnatlités à prévoir
 

@@ -63,7 +63,7 @@ const Header = () => {
                 <Link to="/account/profile">Profil</Link>
                 <Link className="register">
                   <button onClick={() => logout()} className="logout">
-                    <span>Logout</span>
+                    <span>Déconnexion</span>
                   </button>
                 </Link>
               </>
