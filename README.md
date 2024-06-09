@@ -6,9 +6,11 @@
 - \*\*C'est un projet suite au cours de FullStack avec Vincent Zerbib
 - \*\*Cette application vous permet de vendre ou de louer des appartements en ligne de manière simple et efficace.
 
-Lien front: [Booking App](https://booking-m1.vercel.app "Booking App")
-Lien back: [Api](https://booking-api-li8f.onrender.com/api/v1 "API PROD")
-Lien des requêtes postman: [Postman](https://web.postman.co/workspace/ed1ac5c0-9a99-40a0-855d-456f701e3c6f/documentation/19841044-88b835c9-9c4a-4cd2-84d3-a06dcec296ee "Postman")
+- Lien front: [Booking App](https://booking-m1.vercel.app "Booking App")
+- Lien back: [Api](https://booking-api-li8f.onrender.com/api/v1 "API PROD")
+- Lien des requêtes postman: [Postman](https://web.postman.co/workspace/ed1ac5c0-9a99-40a0-855d-456f701e3c6f/documentation/19841044-88b835c9-9c4a-4cd2-84d3-a06dcec296ee "Postman")
+- Lien github api: [Api](https://github.com/Projet-FullStack-M1/booking-api "Api")
+- Lien github front: [Front](https://github.com/MalicknND/booking-front "Front")
 
 ## Technologies Utilisées
 
@@ -18,6 +20,8 @@ Lien des requêtes postman: [Postman](https://web.postman.co/workspace/ed1ac5c0-
 - **Sass & Tailwind CSS**: Outils puissants pour la stylisation et la mise en page.
 - **Slider**: Qui sera créer from scratch
 - **Leaflet Map**: Affichage de cartes interactives pour localiser les appartements.
+- **React Quill** Un composant React qui encapsule le célèbre éditeur de texte riche Quill.
+- **React Helmet** Permet de gérer facilement les modifications du head de votre document HTML dans une application React
 
 ### Backend
 
