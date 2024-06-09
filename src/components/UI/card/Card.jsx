@@ -40,11 +40,11 @@ const Card = ({ item }) => {
           <div className={styles.features}>
             <div className={styles.feature}>
               <img src="/images/bed.png" alt="bed" />
-              <span>{item.bedroom} bedroom</span>
+              <span>{item.bedroom} Chambres</span>
             </div>
             <div className={styles.feature}>
               <img src="/images/bath.png" alt="bath" />
-              <span>{item.bathroom} bathroom</span>
+              <span>{item.bathroom} Salle de bain</span>
             </div>
           </div>
           <div className={styles.icons}>
